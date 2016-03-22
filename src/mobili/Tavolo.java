@@ -12,6 +12,14 @@ package mobili;
 public class Tavolo {
     private String forma;
     
+public void IngombroTavolo() {
+    
+    
+}
 
+public void ScatolaTavolo (){
+    
+    
+}
     
 }
