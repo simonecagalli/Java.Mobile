@@ -9,7 +9,7 @@ package mobili;
  *
  * @author 4ai
  */
-public class Mobili {
+public class Ordine {
     
     private String tipoMobile;
     private int dimX_M;
