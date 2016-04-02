@@ -1,95 +1,68 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mobili;
 
-/**
- *
- * @author 4ai
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ordine {
-    
-    private String tipoMobile;
-    private int dimX_M;
-    private int dimY_M;
-    private int dimZ_M;
-    private int dimX_S;
-    private int dimY_S;
-    private int dimZ_S;
 
-    public int getDimX_M() {
-        return dimX_M;
+    private String nome;
+    private String cognome;
+    private List<Mobile> lm = new ArrayList<>();
+
+    public Ordine(String nome, String cognome) {
+        this.nome = nome;
+        this.cognome = cognome;
+    }
+  
+    public String getNome() {
+        return nome;
     }
 
-    public void setDimX_M(int dimX_M) {
-        this.dimX_M = dimX_M;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public int getDimY_M() {
-        return dimY_M;
+    public String getCognome() {
+        return cognome;
     }
 
-    public void setDimY_M(int dimY_M) {
-        this.dimY_M = dimY_M;
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
     }
 
-    public int getDimZ_M() {
-        return dimZ_M;
+    public List<Mobile> getLm() {
+        return lm;
     }
 
-    public void setDimZ_M(int dimZ_M) {
-        this.dimZ_M = dimZ_M;
+    public void setLm(List<Mobile> lm) {
+        this.lm = lm;
     }
 
-    public int getDimX_S() {
-        return dimX_S;
+    public void addOrdine(Mobile m) {
+        this.lm.add(m);
     }
 
-    public void setDimX_S(int dimX_S) {
-        this.dimX_S = dimX_S;
+    public double calcolaIngombroScatole() {
+        double sum = 0;
+        for (Mobile m : this.lm) {
+            sum += m.calcolaIngombro();
+        }
+        return sum;
     }
 
-    public int getDimY_S() {
-        return dimY_S;
-    }
-
-    public void setDimY_S(int dimY_S) {
-        this.dimY_S = dimY_S;
-    }
-
-    public int getDimZ_S() {
-        return dimZ_S;
-    }
-
-    public void setDimZ_S(int dimZ_S) {
-        this.dimZ_S = dimZ_S;
-    }
-
-    public String getTipoMobile() {
-        return tipoMobile;
-    }
-
-    public void setTipoMobile(String tipoMobile) {
-        this.tipoMobile = tipoMobile;
-    }
-
-    
-    
-    
-public void sceglimobile (){
-    if (tipoMobile == "Tavolo"){
-       
-    }
-}
-    
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Ordine ordine = new Ordine("Nome","Cognome");
+        Sedia sd = new Sedia(true, 49, 74, 53, 60, 80, 60, 15);
+        Armadio ad = new Armadio(6 ,230 ,180 ,60 ,240 ,65 , 40, 30);
+        Tavolo tv = new Tavolo("Ovale", 1, 1, 1, 5, 5, 5, 50);
+        ordine.addOrdine(sd);
+        ordine.addOrdine(ad);
+        ordine.addOrdine(tv);
+        for (Mobile m : ordine.getLm()) {
+            System.out.println(m);
+            System.out.println("Ingombro: " + m.calcolaIngombro() + " mq\n");
+        }
+        System.out.println("Ingombro totale: " + ordine.calcolaIngombroScatole() + " mq");
     }
-    
+
 }
