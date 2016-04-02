@@ -60,9 +60,9 @@ public class Ordine {
         ordine.addOrdine(tv);
         for (Mobile m : ordine.getLm()) {
             System.out.println(m);
-            System.out.println("Ingombro: " + m.calcolaIngombro() + " mq\n");
+            System.out.println("Ingombro: " + m.calcolaIngombro() + " cmq\n");
         }
-        System.out.println("Ingombro totale: " + ordine.calcolaIngombroScatole() + " mq");
+        System.out.println("Ingombro totale: " + ordine.calcolaIngombroScatole() + " cmq");
     }
 
 }
